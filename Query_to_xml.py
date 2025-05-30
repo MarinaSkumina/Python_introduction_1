@@ -10,7 +10,7 @@ def import_to_xml(query_body: str, file_name: str) -> None:
                             port=5432)
     # Open a cursor to perform database operations
     cur = conn.cursor()
-    # Quering the list of rooms with number of students in each
+    # Querying the list of rooms with number of students in each
     file_name = file_name + '.xml'
     cur.execute(query_body)
     # Getting the results of the query

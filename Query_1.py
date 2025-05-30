@@ -12,5 +12,3 @@ file_name = 'num_stud_in_rooms'
 
 # Performing choosing type of output file format function
 Query_init.query_init(query_body=query_1, file_name=file_name)
-
-
