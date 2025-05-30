@@ -1,7 +1,7 @@
-import psycopg2
+import Query_init
 
-# вывод только комнат
-cur.execute('''
+# Query body for choosing 'Five rooms with the lowest average student age.'
+query_1 = '''
     with student_age as (
         select room_id, EXTRACT(year FROM AGE(current_date, birthday)) :: int as age
         from students
@@ -11,9 +11,11 @@ cur.execute('''
     from student_age inner join rooms as r using(room_id)
     group by room_name
     order by avg_age
-    limit 5;
-''')
+    limit 5
+'''
 
-# Getting the results of the query
-version = cur.fetchall()[0]
-print(version)
+file_name = '5_min_avg_age'
+
+# Performing choosing type of output file format function
+Query_init.query_init(query_body=query_1, file_name=file_name)
+
