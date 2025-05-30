@@ -3,7 +3,9 @@ import Query_to_xml
 
 # Choosing the type of output file XML or JSON:
 def query_init (query_body : str, file_name : str) -> None:
-    query_xml = "SELECT query_to_xml('" + query_body + "', true, false, '');"
+    query_clean_xml = query_body.replace("'", "''").replace("\n", " ")
+
+    query_xml = f"SELECT query_to_xml('{query_clean_xml}', true, false, '');"
     query_json = 'SELECT json_agg(in_query) FROM (' + query_body + ') as in_query;'
     input_done = False
     while input_done == False:
