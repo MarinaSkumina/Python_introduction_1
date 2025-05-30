@@ -7,7 +7,7 @@ query_1 = '''
             GROUP BY rooms.room_name, rooms.room_id
             ORDER BY rooms.room_id
 '''
-query_xml = "SELECT query_to_xml('" + query_1 + "', true, true, '');"
+query_xml = "SELECT query_to_xml('" + query_1 + "', true, false, '');"
 query_json = 'SELECT json_agg(in_query) FROM (' + query_1 + ') as in_query;'
 file_name = 'num_stud_in_rooms'
 
