@@ -23,7 +23,7 @@ def create_tables(conn):
     def path_input_rooms () -> None:
         #print("Please, enter the path to the rooms data file")
         #path_rooms = input()
-        path_rooms = "./rooms.json"
+        path_rooms = "data/rooms.json"
         if os.path.exists(path_rooms):
             with open(path_rooms, encoding="UTF-8") as file_json:
                 rooms = json.load(file_json)
@@ -59,7 +59,7 @@ def create_tables(conn):
         birthday date,
         student_name text,
         sex text,
-        room_id integer references rooms (room_id)
+        room_id integer references rooms (room_id) ON DELETE CASCADE
         );
         CREATE INDEX index_sex ON students USING HASH (sex);
     ''')
@@ -70,7 +70,7 @@ def create_tables(conn):
     def path_input_students () -> str:
         #print("Please, enter the path to the students data file")
         #students_path = input()
-        students_path = "./students.json"
+        students_path = "data/students.json"
         if os.path.exists(students_path):
             with open(students_path, encoding="UTF-8") as file_json:
                 students = json.load(file_json)
