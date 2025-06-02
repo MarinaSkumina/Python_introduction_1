@@ -1,14 +1,9 @@
 import json
 import psycopg2
+from DB_connection import connection
 
-def import_to_json(query_body: str, file_name: str) -> None:
-    # Connect to postgres DB
-    conn = psycopg2.connect(dbname='students_rooms',
-                            host="localhost",
-                            user='postgres',
-                            password='password',
-                            port=5432)
-    # Open a cursor to perform database operations
+@connection
+def import_to_json(conn, query_body: str, file_name: str) -> None:
     cur = conn.cursor()
     # Making query
     cur.execute(query_body)
@@ -20,9 +15,7 @@ def import_to_json(query_body: str, file_name: str) -> None:
     with open(file_name, 'w') as f:
         json.dump(version, f, indent=4)
         f.close()
-    # Closing the connection
-    cur.close()
-    conn.close()
+
 
 
 
