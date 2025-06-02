@@ -1,0 +1,8 @@
+# Основная библиотека для работы с PostgreSQL
+psycopg2 == 2.9.10
+
+# Для экспорта в XML и JSON используются стандартные модули Python
+# (json и xml.etree.ElementTree), они не требуют установки
+
+# Уточнение версии Python
+python_version >= "3.8"

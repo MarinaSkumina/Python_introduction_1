@@ -11,7 +11,6 @@ query_1 = '''
 	    order by (birthday) desc 
 	    rows between unbounded preceding and unbounded following
 	)
-	order by dif_age
 	)
 	select room_name, ROUND(AVG(dif_age), 2) as dif_age
 	from student_dif_age
