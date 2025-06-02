@@ -4,8 +4,8 @@ import Query_init
 query_1 = '''
       select room_name, 
            ROUND(AVG(EXTRACT(year FROM AGE(current_date, birthday)) :: int ), 1) as avg_age
-    from students 
-        inner join rooms as r using(room_id)
+    from students s 
+        inner join rooms as r ON s.room_id = r.room_id
     group by room_name
     order by avg_age
     limit 5
