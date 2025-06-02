@@ -11,7 +11,7 @@ def import_to_json(conn, query_body: str, file_name: str) -> None:
     version = cur.fetchone()[0]
     print(version)
     # Writting the results to json-file
-    file_name = file_name + '.json'
+    file_name = './output_data/' + file_name + '.json'
     with open(file_name, 'w') as f:
         json.dump(version, f, indent=4)
         f.close()
