@@ -38,8 +38,6 @@ CREATE DATABASE students_rooms;
 
 \q
 
-Файл **docker-compose.yml**
-
 ### Структура таблиц базы данных
 
 ![Схема](./schema.png)
