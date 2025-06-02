@@ -8,12 +8,13 @@ def query_init (query_body : str, file_name : str) -> None:
     query_json = 'SELECT json_agg(in_query) FROM (' + query_body + ') as in_query;'
     input_done = False
     while input_done == False:
-        print('Type output-file format (XML or JSON):')
-        output_type = input()
-        if output_type == 'XML':
+        output_type = (input('Type output-file format (XML or JSON), press Enter to choose JSON by default:')).lower()
+        if not output_type.strip():
+            output_type = "json"
+        if output_type == 'xml':
             Query_to_xml.import_to_xml(query_body=query_xml, file_name=file_name)
             input_done = True
-        elif output_type == 'JSON':
+        elif output_type == 'json':
             Query_to_json.import_to_json(query_body=query_json, file_name=file_name)
             input_done = True
         else:
