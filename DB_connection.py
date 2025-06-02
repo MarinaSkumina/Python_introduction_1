@@ -9,6 +9,6 @@ def connection(func):
                                  password='password',
                                  port=5432)
         result = func(conn, *args, **kwargs)
-
+        conn.close()
         return result
     return wrapper

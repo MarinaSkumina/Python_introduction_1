@@ -94,6 +94,7 @@ def create_tables(conn):
     # Getting query result
     version = cur.fetchone()
     print(version)
+    cur.close()
 
 
 create_tables()

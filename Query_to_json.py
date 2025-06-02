@@ -15,7 +15,7 @@ def import_to_json(conn, query_body: str, file_name: str) -> None:
     with open(file_name, 'w') as f:
         json.dump(version, f, indent=4)
         f.close()
-
+    cur.close()
 
 
 

@@ -17,3 +17,4 @@ def import_to_xml(conn, query_body: str, file_name: str) -> None:
     # Writing data to xml-file
     with open(file_name, "wb") as f:
         f.write(ET.tostring(tree))
+    cur.close()
