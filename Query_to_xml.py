@@ -1,13 +1,9 @@
 import psycopg2
 from xml.etree import ElementTree as ET
+from DB_connection import connection
 
-def import_to_xml(query_body: str, file_name: str) -> None:
-    # Connect to postgres DB
-    conn = psycopg2.connect(dbname='students_rooms',
-                            host="localhost",
-                            user='postgres',
-                            password='password',
-                            port=5432)
+@connection
+def import_to_xml(conn, query_body: str, file_name: str) -> None:
     # Open a cursor to perform database operations
     cur = conn.cursor()
     # Querying the list of rooms with number of students in each
@@ -21,6 +17,3 @@ def import_to_xml(query_body: str, file_name: str) -> None:
     # Writing data to xml-file
     with open(file_name, "wb") as f:
         f.write(ET.tostring(tree))
-    # Closing the connection
-    cur.close()
-    conn.close()
