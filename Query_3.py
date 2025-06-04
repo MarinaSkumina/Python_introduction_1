@@ -5,7 +5,8 @@ query_1 = '''
     with student_dif_age as (
         select room_name, 
 	    (first_value(birthday) over w - last_value(birthday) over w) as dif_age
-	    from students s inner join rooms r ON s.room_id = r.room_id
+	    from students s 
+	    inner join rooms r ON s.room_id = r.room_id
 	    window w as(
 		partition by room_name 
 	    order by (birthday) desc 
